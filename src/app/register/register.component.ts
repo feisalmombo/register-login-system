@@ -10,7 +10,8 @@ import { ApiService } from '../api.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  angForm: FormGroup;
+  // angForm: FormGroup;
+  angForm: any;
   constructor(private fb: FormBuilder,private apiService: ApiService,private router:Router) {
 
     this.angForm = this.fb.group({
