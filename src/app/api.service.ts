@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class DataserviceService {
+export class ApiService {
   redirectUrl: string;
 
   baseUrl:string = "http://localhost/uat/api";

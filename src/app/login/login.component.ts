@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { DataserviceService } from '../dataservice.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { DataserviceService } from '../dataservice.service';
 })
 export class LoginComponent implements OnInit {
   angForm: FormGroup;
-  constructor(private fb: FormBuilder,private dataService: DataserviceService,private router:Router) {
+  constructor(private fb: FormBuilder,private apiService: ApiService,private router:Router) {
     this.angForm = this.fb.group({
 
       email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   }
   postdata(angForm1:NgForm)
   {
-    this.dataService.userlogin(angForm1.value.email,angForm1.value.password)
+    this.apiService.userlogin(angForm1.value.email,angForm1.value.password)
       .pipe(first())
       .subscribe(
           data => {
-                const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/dashboard';
+                const redirect = this.apiService.redirectUrl ? this.apiService.redirectUrl : '/dashboard';
                 this.router.navigate([redirect]);
 
           },
