@@ -6,12 +6,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  redirectUrl: string;
+  // redirectUrl: string;
+  redirectUrl: any;
 
   baseUrl:string = "http://localhost/uat/api";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient : HttpClient) { }
-  public userlogin(username, password) {
+  public userlogin(username: any, password: any) {
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
         .pipe(map(Usermodule => {
             this.setToken(Usermodule[0].name);
@@ -19,7 +20,7 @@ export class ApiService {
             return Usermodule;
         }));
 }
-public userregistration(name,email,pwd) {
+public userregistration(name: any,email: any,pwd: any) {
   return this.httpClient.post<any>(this.baseUrl + '/registration.php', { name,email, pwd })
       .pipe(map(Usermodule => {
           return Usermodule;
@@ -44,4 +45,5 @@ isLoggedIn() {
     return true
   }
   return false;
+}
 }
