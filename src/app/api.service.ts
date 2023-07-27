@@ -9,8 +9,9 @@ export class ApiService {
   // redirectUrl: string;
   redirectUrl: any;
 
+  baseUrl:string = "http://localhost/register-login-system/php";
   // baseUrl:string = "http://localhost/uat/api";
-  baseUrl:string = "http://localhost:9050";
+  // baseUrl:string = "http://localhost:9050";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient : HttpClient) { }
   public userlogin(username: any, password: any) {
