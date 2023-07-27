@@ -9,21 +9,22 @@ export class ApiService {
   // redirectUrl: string;
   redirectUrl: any;
 
-  baseUrl:string = "http://localhost/uat/api";
+  // baseUrl:string = "http://localhost/uat/api";
+  baseUrl:string = "http://localhost:9050";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient : HttpClient) { }
   public userlogin(username: any, password: any) {
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
-        .pipe(map(Usermodule => {
-            this.setToken(Usermodule[0].name);
+        .pipe(map(Users => {
+            this.setToken(Users[0].name);
             this.getLoggedInName.emit(true);
-            return Usermodule;
+            return Users;
         }));
 }
 public userregistration(name: any,email: any,pwd: any) {
   return this.httpClient.post<any>(this.baseUrl + '/register.php', { name,email, pwd })
-      .pipe(map(Usermodule => {
-          return Usermodule;
+      .pipe(map(Users => {
+          return Users;
       }));
 }
 //token

@@ -6,7 +6,7 @@
         <div class="jumbotron">
             <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
                 <div class="form-group">
-                    <label for="name">User Name</label>
+                    <label for="name">Name</label>
                     <input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="User Name">
 
                 </div>
@@ -21,12 +21,7 @@
                     <input type="password" name="Password" formControlName="password"  autocomplete="off" class="form-control input-sm" placeholder="Password">
 
                 </div>
-                <div class="form-group">
-                    <label for="name">Mobile No</label>
-                    <input type="text" name="mobile" formControlName="mobile" autocomplete="off" class="form-control input-sm" placeholder="Mobile No">
-
-                </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!angForm.valid">Registration</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!angForm.valid">Register</button>
             </form>
         </div>
     </div>
