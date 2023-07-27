@@ -21,7 +21,7 @@ export class ApiService {
         }));
 }
 public userregistration(name: any,email: any,pwd: any) {
-  return this.httpClient.post<any>(this.baseUrl + '/registration.php', { name,email, pwd })
+  return this.httpClient.post<any>(this.baseUrl + '/register.php', { name,email, pwd })
       .pipe(map(Usermodule => {
           return Usermodule;
       }));
