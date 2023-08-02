@@ -8,10 +8,13 @@ import { ApiService } from './api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   loginbtn:boolean;
   logoutbtn:boolean;
-  constructor(private apiService: ApiService) {
+
+  constructor(private apiService: ApiService)
+  {
     apiService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.apiService.isLoggedIn())
     {
@@ -23,17 +26,18 @@ export class AppComponent {
      this.loginbtn=true;
      this.logoutbtn=false
     }
+  }
 
-
-}
 private changeName(name: boolean): void {
   this.logoutbtn = name;
   this.loginbtn = !name;
 }
+
 logout()
 {
   this.apiService.deleteToken();
   window.location.href = window.location.href;
 }
+
 }
 
