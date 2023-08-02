@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   // redirectUrl: string;
   redirectUrl: any;
@@ -21,12 +22,14 @@ export class ApiService {
             return Users;
         }));
 }
+
 public userregistration(name: any,email: any,pwd: any) {
   return this.httpClient.post<any>(this.baseUrl + '/register.php', { name,email, pwd })
       .pipe(map(Users => {
           return Users;
       }));
 }
+
 //token
 setToken(token: string) {
   localStorage.setItem('token', token);
@@ -47,4 +50,5 @@ isLoggedIn() {
   }
   return false;
 }
+
 }
